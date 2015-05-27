@@ -11,9 +11,9 @@ var mouseY = 1;
 
 
 // one quaternion per monkey
-var polychoraList = ["8","24","24dual","24both","120"];
+var polychoraList = ["8","24","24dual","24both","48","120"];
 var polychoron = polychoraList[0];
-var quatPerMonkeyArrayDict = { "8": centers_8_cell, "24": centers_24_cell, "24dual": centers_24_cell_dual, "24both": centers_24_cell_dual.concat(centers_24_cell), "120": centers_120_cell};
+var quatPerMonkeyArrayDict = { "8": centers_8_cell, "24": centers_24_cell, "24dual": centers_24_cell_dual, "24both": centers_24_cell_dual.concat(centers_24_cell), "48": centers_24_cell_dual.concat(centers_24_cell), "120": centers_120_cell};
 
 // var quatPerMonkeyArray = centers_24_cell_dual.concat(centers_24_cell);
 var quatPerMonkeyArray = quatPerMonkeyArrayDict[polychoron];
@@ -21,19 +21,20 @@ var quatPerMonkeyArray = quatPerMonkeyArrayDict[polychoron];
 var numMonkeys = quatPerMonkeyArray.length;
 var matArray = new Array(numMonkeys);
 
-var travelDirDict = {"8": centers_8_cell[5], "24": centers_24_cell_dual[4], "24dual": centers_24_cell_dual[4], "24both": centers_24_cell_dual[4], "120": centers_120_cell[3]};
+var travelDirDict = {"8": centers_8_cell[5], "24": centers_24_cell_dual[4], "24dual": centers_24_cell_dual[4], "24both": centers_24_cell_dual[4], "48":centers_24_cell[16], "120": centers_120_cell[3]};
 
 var travelDir = travelDirDict[polychoron];  //for 24-cell_dual //4 is down head/foot.  //12 is (0,0,0,1)
 var colourDir = travelDir;
 var HopfColorMatrix = makeHopfColorMatrix(colourDir);
 
-var modelScaleDict = {"8":1, "24":50, "24dual":50, "24both":50, "120":3.07768}
+var modelScaleDict = {"8":1, "24":50, "24dual":50, "24both":50, "48": 2.4,"120":3.07768}
 var modelScale = modelScaleDict[polychoron];
 
 var modelFileNameDict = {"8":'media/monkey_15k_tris_closed.obj',
                         "24":'media/24-cell_monkey_lowpoly_001_cen-vert_50_flip.obj',
                         "24dual":'media/24-cell_monkey_lowpoly_001_cen-vert_50_flip.obj',
                         "24both":'media/24-cell_monkey_lowpoly_001_cen-vert_50_flip.obj',
+                        "48":'media/48_cell_monkey_001_rescale.obj',
                         "120":'media/120-cell_monkey_lowpoly_003_left_screw.obj'};
 var modelFileName = modelFileNameDict[polychoron];
 
@@ -217,7 +218,7 @@ function selectPolychora(event) {
 
   var keySelect = event.keyCode - 48; //1 is 49
 
-  if (keySelect > 0 && keySelect < 6){
+  if (keySelect > 0 && keySelect < 7){
     changePolychoron(keySelect);
   }
 }
@@ -251,7 +252,7 @@ function changePolychoron(selected) {
     //listen for click
 
     document.body.addEventListener( 'click', function(){
-      clicky = (clicky + 1) % 5 + 1;
+      clicky = (clicky) % 6 + 1;
       changePolychoron(clicky);
       effect.setFullScreen( true );
     })
