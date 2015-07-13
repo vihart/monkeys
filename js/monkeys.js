@@ -255,7 +255,7 @@ function changePolychoron(selected) {
       clicky = (clicky) % 6 + 1;
       changePolychoron(clicky);
       effect.setFullScreen( true );
-    })
+    });
 
     /*
     Listen for keyboard events
