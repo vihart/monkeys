@@ -5,7 +5,6 @@ var mesh;
 
 var effect;
 var controls;
-var clicky = 1;
 var mouseX = 1;
 var mouseY = 1;
 
@@ -183,8 +182,8 @@ function animate() {
 
 //listen for click
 function onclick() {
-  clicky = (clicky) % 6 + 1;
-  changePolychoron(clicky);
+  var selected = (currSelected) % 6 + 1;
+  changePolychoron(selected);
   effect.setFullScreen( true );
 }
 
@@ -225,8 +224,9 @@ function selectPolychora(event) {
   }
 }
 
+var currSelected = 1;
 function changePolychoron(selected) {
-  if (scene) {
+  if (selected !== currSelected && scene) {
     while (scene.children.length > 0) {
       scene.remove(scene.children[scene.children.length - 1]);
     }
@@ -241,6 +241,7 @@ function changePolychoron(selected) {
     modelFileName = modelFileNameDict[polychoron];
 
     loadStuff();
+    currSelected = selected;
   }
 }
 

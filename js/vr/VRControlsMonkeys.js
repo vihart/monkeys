@@ -184,7 +184,7 @@ THREE.VRControls = function ( camera, done ) {
 		} else {
 			return null;
 		}
-		
+
 		if (orientation == null) {
 			return null;
 		}
@@ -245,6 +245,9 @@ function translateByVector(v) {
 //hold down keys to do rotations and stuff
 function key(event, sign) {
   var control = controls.manualControls[event.keyCode];
+	if (typeof control === 'undefined') {
+		return;
+	}
 
   if (sign === 1 && control.active || sign === -1 && !control.active) {
     return;
