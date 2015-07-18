@@ -26,7 +26,7 @@ The virtual monkeys are coloured by an algorithm based on the Hopf fibration fro
 By Vi Hart, Andrea Hawksley, Henry Segerman, and Will Segerman, using Marc ten Bosch's 4D graphics shader, Mozilla's webVR stuff, and threejs.
 
 - http://vihart.com
-- https://andreahawksley.com
+- http://andreahawksley.com
 - http://www.segerman.org/
 - http://willsegerman.com
 - http://www.marctenbosch.com
