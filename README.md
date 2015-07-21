@@ -12,8 +12,8 @@ The virtual monkeys are coloured by an algorithm based on the Hopf fibration fro
 ## Useful commands 
 
 - 8-cell: ```1```
-- 16-cell: ```2```
-- 24-cell: ```3```
+- 24-cell: ```2```
+- 24-cell dual: ```3```
 - 24-cell and dual: ```4```
 - 48-cell: ```5```
 - 120-cell: ```6```
