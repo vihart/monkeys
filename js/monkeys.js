@@ -185,6 +185,9 @@ function onclick() {
   var selected = (currSelected) % 6 + 1;
   changePolychoron(selected);
   effect.setFullScreen( true );
+  if (typeof window.screen.orientation !== 'undefined' && typeof window.screen.orientation.lock === 'function') {
+    window.screen.orientation.lock('landscape-primary');
+  }
 }
 
 document.body.addEventListener('click', onclick);
